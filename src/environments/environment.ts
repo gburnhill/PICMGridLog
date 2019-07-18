@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyCZMNhBggfjmBGsR2gmI31Jo9QjS9fpLjM",
+    authDomain: "picm-grid-log.firebaseapp.com",
+    databaseURL: "https://picm-grid-log.firebaseio.com",
+    projectId: "picm-grid-log",
+    storageBucket: "picm-grid-log.appspot.com",
+    messagingSenderId: "555696967830",
+    appId: "1:555696967830:web:e4e7118f2edd2764"
+  }
 };
 
 /*

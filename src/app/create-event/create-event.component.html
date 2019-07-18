@@ -1,0 +1,20 @@
+<div class="container">
+
+    <h1>Intubation Form</h1>
+    <form (ngSubmit)="onSubmit()" #intubationForm="ngForm">
+      <div class="form-group">
+        <label for="type">Type</label>
+        <select class="form-control" id="type" required [(ngModel)]="model.type" name="type">
+            <option *ngFor="let itype of intubationTypes" [value]="itype">{{itype}}</option>
+        </select>
+      </div>
+ 
+      <div class="form-group">
+        <label for="notes">Notes</label>
+        <input type="text" class="form-control" id="notes" required [(ngModel)]="model.notes" name="notes">
+      </div>
+ 
+      <button type="submit" class="btn btn-success">Submit</button>
+ 
+    </form>
+</div>
