@@ -1,15 +1,16 @@
+import { AuthService } from './auth-service.service';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 import { log } from 'util';
-
+import { objAndSameType } from '@ngx-formly/core/lib/utils';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseService {
 
-  constructor(public db: AngularFirestore) {}
+  constructor(public db: AngularFirestore, public authService: AuthService) {}
 
   getEvents(){
     return this.db.collection('events').snapshotChanges();
@@ -33,9 +34,14 @@ export class FirebaseService {
       .snapshotChanges()
   }
 
+  getEventsByUser(userID){
+    return this.db.collection('events', ref => ref.where('userID', '==', userID)).snapshotChanges()
+  }
+
   createEvent(value){
-    //return this.db.collection('events').add({eventType: value.eventType, type: value.type, notes: value.notes, date: value.date});
-    log(value.getObjects())
-    return this.db.collection('events').add(value.getObjects())
+    let user = this.authService.user;
+    let obj = value.getObjects();
+    obj.userID = user.uid;
+    return this.db.collection('events').add(obj)
   }
 }

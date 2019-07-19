@@ -18,6 +18,7 @@ constructor(
 ){}
 
 public eventType: 'TraumaCall'
+public userID: '';
 
     getObjects(){
         return {eventType: this.eventType, 

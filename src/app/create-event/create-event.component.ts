@@ -19,8 +19,6 @@ export class CreateEventComponent {
 
   model = new Intubation(1, this.intubationTypes[0], new Date(), true);
   
-  currentEvents = this.firebaseService.getEvents();
-  
   onSubmit(value){
     log(value);
     log(JSON.stringify(this.currentEvents));

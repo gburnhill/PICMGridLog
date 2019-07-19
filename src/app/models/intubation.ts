@@ -13,7 +13,8 @@ export class Intubation {
     public notes?: string) {}
 
     public eventType = 'Intubation';
-
+    public userID = '';
+    
     getObjects(){
         return {
             eventType: this.eventType, 

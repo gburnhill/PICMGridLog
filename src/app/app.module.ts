@@ -1,3 +1,4 @@
+import { LoginComponent } from './login/login.component';
 import { ModifyIntubationResolver } from './modify-intubation/modify-intubation.resolver';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -8,6 +9,7 @@ import { CreateEventComponent } from './create-event/create-event.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuth} from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { FirebaseService } from './services/firebase.service';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -19,6 +21,7 @@ import { FormlyBootstrapModule } from '@ngx-formly/bootstrap';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ModifyIntubationComponent} from './modify-intubation/modify-intubation.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,8 @@ import { ModifyIntubationComponent} from './modify-intubation/modify-intubation.
     CreateEventComponent,
     HomeComponent,
     ModifyIntubationComponent,
+    LoginComponent,
+    HeaderComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -37,9 +42,9 @@ import { ModifyIntubationComponent} from './modify-intubation/modify-intubation.
     BrowserAnimationsModule,
     NgbModule,
     FormlyModule.forRoot(),
-    FormlyBootstrapModule
+    FormlyBootstrapModule,
   ],
-  providers: [FirebaseService, ModifyIntubationResolver],
+  providers: [FirebaseService, ModifyIntubationResolver, AngularFireAuth],
   bootstrap: [AppComponent],
   entryComponents: [ModifyIntubationComponent]
 })
