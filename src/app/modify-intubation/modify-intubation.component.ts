@@ -14,6 +14,7 @@ import { log } from 'util';
 
 export class ModifyIntubationComponent implements OnInit {
   item: any;
+  new: boolean;
   model: Intubation;
   form = new FormGroup({});
   fields: FormlyFieldConfig[] = [{
@@ -92,6 +93,10 @@ export class ModifyIntubationComponent implements OnInit {
           this.item = data.payload.data();
           this.item.id = data.payload.id;
           this.model = this.item as Intubation;
+          this.new = false;
+        } else {
+          this.model = new Intubation(1, "oral", new Date(), true);
+          this.new = true;
         }
       });
     }

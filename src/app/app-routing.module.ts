@@ -10,9 +10,9 @@ import { HomeComponent} from './home/home.component';
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-{ path: 'createEvent', component: CreateEventComponent, canActivate: [AuthGuard]},
-{path: 'home', component: HomeComponent},
-{ path: 'details/:id', component: ModifyIntubationComponent, canActivate: [AuthGuard], resolve:{data : ModifyIntubationResolver} }];
+  {path: 'createEvent', component: CreateEventComponent},
+  {path: 'home', component: HomeComponent},
+  {path: 'details/:id', component: ModifyIntubationComponent, resolve:{data : ModifyIntubationResolver} }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

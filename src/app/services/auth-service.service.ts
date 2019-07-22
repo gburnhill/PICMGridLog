@@ -27,6 +27,7 @@ export class AuthService {
       })
     })
   }
+
   getCurrentUser(){
     return new Promise<any>((resolve,reject) => {
       var user = firebase.auth().onAuthStateChanged(function(user){
@@ -37,6 +38,7 @@ export class AuthService {
       })
     })
   }
+
   doLogin(value){
     return new Promise<any>((resolve,reject)=> {
       firebase.auth().signInWithEmailAndPassword(value.email, value.password)
@@ -50,6 +52,7 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       if(firebase.auth().currentUser){
         this.afAuth.auth.signOut();
+        this.user = null;
         resolve();
       }
       else{

@@ -1,14 +1,19 @@
 
-<form #selectionForm="ngForm">    
+<form #selectionForm="ngForm">
+    <div class="row">
+            <div class="col col-md-2">
     <div class="form-group">
-        <div class="col-md-4 offset-md-1">
+
           <div class="input-group">
-            <label for="typeSelect">Select Log Event Type</label>
+              <label for="typeSelect" pd-2>Select Type</label>
             <select type="text" class="form-control" id="typeSelect" [(ngModel)]="searchType" [ngModelOptions]="{standalone: true}" (ngModelChange)="searchByType()">
-            <option *ngFor="let type of typesOptions" [value]="type.reference">{{type.prettyName}}</option> 
+            
+                <option *ngFor="let type of typesOptions" [value]="type.reference">{{type.prettyName}}</option> 
+                <span class="label label-default">Type Stuff Here</span>
             </select>
         </div>
         </div>
+</div>        
     </div>
 </form>
 <div></div>

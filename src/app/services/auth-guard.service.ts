@@ -14,13 +14,11 @@ export class AuthGuardService implements CanActivate {
     private router: Router
   ) { }
  
-  canActivate(): Promise<boolean>{
-    return new Promise((resolve, reject) => {
-      this.authService.getCurrentUser()
-      .then(user => {if (user){return resolve(true)}},err=> {return resolve(false)})
-      })
+  canActivate():boolean{
+    if (this.authService.isLoggedIn){
+      return true
+    }else{
+      return false
     }
-  
-
-  
+  }
 }

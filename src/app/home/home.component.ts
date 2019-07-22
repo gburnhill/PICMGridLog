@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
     public authService: AuthService
   ) { }
 
-  typesOptions = [{reference: 'Intubation', prettyName: 'Intubation'},{reference: 'TraumaCall', prettyName: 'Trauma Call'}];
+  typesOptions = [{reference: 'All', prettyName: 'All Types'},{reference: 'Intubation', prettyName: 'Intubation'},{reference: 'TraumaCall', prettyName: 'Trauma Call'}];
   searchType = "";
   items: Array<any>;
   typeFilteredItems: Array<any>;
@@ -52,9 +52,12 @@ export class HomeComponent implements OnInit {
 */
 
 searchByType(){
-  this.typeFilteredItems = this.items.filter((item) => {
-    console.log('item:' + item.eventType + ' search:' + this.searchType)
-    return item.eventType == this.searchType})
+  if (this.searchType == "All") {
+    this.typeFilteredItems = this.items
+  } else {
+  this.typeFilteredItems = this.items.filter(item => {
+    console.log('item:' + item + ' search:' + this.searchType)
+    return item.payload.doc.data().eventType == this.searchType})}
 }
 
   combineLists(a, b){
